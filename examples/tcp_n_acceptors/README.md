@@ -15,13 +15,13 @@ To start the release in the foreground:
 $ ./_rel/tcp_echo_example/bin/tcp_echo_example console
 ```
 
-Then start a telnet session to port 5555:
+This starts 2 servers, at ports 5555 and 5556. The first one has 1 acceptor process, the second one has 100 acceptor processes.
+
+Try to open 100 connections to each of these servers and see the difference:
 
 ``` bash
-$ telnet localhost 5555
+> tcp_echo_app:test_connections(5555).
+...
+> tcp_echo_app:test_connections(5556).
+...
 ```
-
-Type in a few words and see them echoed back.
-
-Be aware that there is a timeout of 5 seconds without receiving
-data before the example server disconnects your session.
